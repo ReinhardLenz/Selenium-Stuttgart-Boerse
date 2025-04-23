@@ -1,4 +1,7 @@
 # Selenium-Stuttgart-Boerse
+
+UPDATE 23.4.2025. for instance, the cookie acceptor is now a aside element, and many other changes. Basically everythin changed!
+
 A Python program with  Selenium module, to open "Stuttgart" Bond search, select criteria and output the result to a excel file.
 There are some dates calculated from the now with the datetime, and years are added or subtracted and the calculated dates are entered in the web page. THe excel file name contains the actural date. My idea was to run this program in certain intervals, automatically started y crontab, and then it would be "headless".
 
