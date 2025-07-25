@@ -1,5 +1,6 @@
 🏦 Stuttgart Bond Search Automation
 Last major update: 23.4.2025
+NOTE! At the the moment (25.7.2025) this version doesn't work anymore, due to change in structure of the scraped page!!
 
 🎉 Major refactor! Cookie consent handling now uses <aside> elements. Many improvements – essentially, everything changed.
 
