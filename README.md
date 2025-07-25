@@ -14,13 +14,21 @@ Copier
 Modifier
 bond_search/
 ├── bond_search.py            # Main script
+
 ├── config.py                 # Chrome WebDriver setup for Linux
+
 ├── config1.py                # Optional config for Windows
+
 ├── web_actions.py           # Utility functions for Selenium interactions
+
 ├── locators.py              # Central place for XPath and CSS selectors
+
 ├── gpt_helper.py            # Interacts with GPT-4 for summaries (optional)
+
 ├── requirements.txt         # Required Python packages
+
 ⚙️ Setup Instructions
+
 🔐 Prerequisites
 Python 3.8+
 
