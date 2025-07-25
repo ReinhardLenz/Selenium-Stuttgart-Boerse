@@ -21,8 +21,6 @@ At the end, a GPT-4 summary is optionally generated to provide insights about th
 
 ├── locators.py              # Central place for XPath and CSS selectors
 
-├── gpt_helper.py            # Interacts with GPT-4 for summaries (optional)
-
 ├── requirements.txt         # Required Python packages
 
 ⚙️ Setup Instructions
