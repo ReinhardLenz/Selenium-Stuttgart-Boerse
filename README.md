@@ -9,17 +9,14 @@ This Python project automates the process of searching for bonds on the Börse S
 At the end, a GPT-4 summary is optionally generated to provide insights about the bonds (requires OpenAI API access).
 
 🧩 Project Structure
-plaintext
-Copier
-Modifier
-bond_search/
-├── bond_search.py            # Main script
 
-├── config.py                 # Chrome WebDriver setup for Linux
-
-├── config1.py                # Optional config for Windows
+├── bond_search5.py            # Main script
 
 ├── web_actions.py           # Utility functions for Selenium interactions
+
+├── web_actions.py           # Utility functions for Selenium interactions
+
+├── config_webdriver_manager.py # Crome web driver setup
 
 ├── locators.py              # Central place for XPath and CSS selectors
 
