@@ -31,29 +31,21 @@ config_webdriver_manager.driver.command_executor._commands["send_command"] = ("P
 params = {'cmd': 'Page.setDownloadBehavior', 'params': {'behavior': 'allow', 'downloadPath': "/path/to/download/dir"}}
 command_result = config_webdriver_manager.driver.execute("send_command", params)
 
-
-
-command_result = config_webdriver_manager.driver.execute("send_command", params)
-
 #config_webdriver_manager.driver.get("https://raikkulenz.kapsi.fi/myproject/test.htm")
 config_webdriver_manager.driver.get("https://www.boerse-stuttgart.de/de-de/tools/produktsuche/anleihen-finder/")
 
 time.sleep(20)
 # Navigate to the webpage
 # Wait until the cookie consent element is present
-cookie_consent_aside = WebDriverWait(config_webdriver_manager.driver, 15).until(
+button = config_webdriver_manager.driver.find_element(By.CSS_SELECTOR, Locators.cookie_acceptor_css_new)
+button.click()
+
+
+""" cookie_consent_aside = WebDriverWait(config_webdriver_manager.driver, 15).until(
     EC.presence_of_element_located((By.ID, "cookie-consent"))
 )
 
 l=cookie_consent_aside.location
-#s=cookie_consent_aside.size
-#print(f'Size : {s}')
-#x = l['x']
-#y = l['y']
-#print("Aside element coordinates")
-
-#print(f'x: {x}')
-#print(f'y: {y}')
 
 # Execute JavaScript to change the z-index of the element
 config_webdriver_manager.driver.execute_script("arguments[0].style.zIndex = '50';", cookie_consent_aside)
@@ -91,6 +83,7 @@ actions = ActionChains(config_webdriver_manager.driver)
 actions.move_by_offset(x_coordinate_cookie_acceptor_button, y_coordinate_cookie_acceptor_button)
 time.sleep(1)
 actions.click().perform()
+ """
 
 web_actions.zoom40androlldown()
 web_actions.relax()
@@ -109,7 +102,18 @@ web_actions.write_operation_selector(Locators.Wahrung_text_field_click_CSS_3_SEL
 
 time.sleep(random.randint(2,6))
 
-web_actions.click_operation_xpath(Locators.Wahrung_Euro_small_cross_click_XP)
+checkbox = config_webdriver_manager.driver.find_element(By.CSS_SELECTOR, Locators.Wahrung_checkbox_Eur1_CSS)
+checkbox.click()
+
+
+
+#checkbox = WebDriverWait(config_webdriver_manager.driver, 10).until(
+#    EC.element_to_be_clickable((By.XPATH, '//label[text()="Euro"]/preceding-sibling::input[@type="checkbox"]'))
+#)
+#checkbox.click()
+
+
+#web_actions.click_operation_xpath(Locators.Wahrung_Euro_small_cross_click_XP)
 
 
 web_actions.click_operation_xpath(Locators.Wahrung_Anwenden_XP)
@@ -124,7 +128,7 @@ time.sleep(random.randint(2,6))
 
 web_actions.click_operation_Xpath(Locators.Zusatzliche_Filter_right_XPATH)
 web_actions.click_operation_css(Locators.handelbare_Einh_css)
-web_actions.click_operation_Xpath(Locators.Gelisteter_Zeitraum_Button_xpath_1)
+web_actions.click_operation_css(Locators.Gelisteter_Zeitraum_Button_css)
 web_actions.relax()
 time.sleep(random.randint(2,6))
 
@@ -140,36 +144,67 @@ web_actions.write_operation_b_xpath(Locators.min_Littera_xp,"1")
 time.sleep(random.randint(2,6))
 web_actions.clear_operation_A_xpath(Locators.max_Littera_xp)
 
-input_field = config_webdriver_manager.driver.find_element(By.CSS_SELECTOR, '#minOrderVolume > div > div > div > div.grid.grid-cols-2.gap-2 > div:nth-child(2) > input')
+
+input_field = config_webdriver_manager.driver.find_element(By.CSS_SELECTOR, Locators.max_Littera_css)
+input_field.clear()
+input_field.send_keys('1000', Keys.RETURN)
+
+""" input_field = config_webdriver_manager.driver.find_element(By.CSS_SELECTOR, Locators.max_Littera_css)
 actions = ActionChains(config_webdriver_manager.driver)
-actions.click(input_field).send_keys('1000').send_keys(Keys.RETURN).perform()
+actions.send_keys()
+actions.click(input_field).send_keys('1000').send_keys(Keys.RETURN).perform() """
 
 
-web_actions.click_operation_css(Locators.Anwenden_littera_css)
+
+web_actions.click_operation_Xpath(Locators.Anwenden_littera_xp)
+#web_actions.click_operation_css(Locators.Anwenden_littera_css)
+
+
 #Choosing Bond Listed date from to date 
+Smaller_date=  datetime.date.today()+ relativedelta(years=5)
+Smaller_date_format = Smaller_date.strftime("%d.%m.%Y")
+
+input_field = WebDriverWait(config_webdriver_manager.driver, 10).until(
+    EC.element_to_be_clickable((By.XPATH, '//input[@placeholder="Fälligkeit von:"]'))
+)
+input_field.send_keys(Smaller_date_format)
 
 web_actions.click_operation_Xpath(Locators.Smaller_date_2_xp)
 time.sleep(random.randint(5,10))
 web_actions.relax()
-web_actions.clear_operation_A_xpath(Locators.Smaller_date_2_xp)
+
+""" web_actions.clear_operation_A_xpath(Locators.Smaller_date_2_xp)
 Smaller_date=  datetime.date.today()+ relativedelta(years=5)
 Smaller_date_format = Smaller_date.strftime("%d.%m.%Y")
 web_actions.write_operation_xpath(Locators.Smaller_date_2_xp,Smaller_date_format)
 time.sleep(random.randint(2,10))
+ """
 
 Bigger_date=  datetime.date.today()+ relativedelta(years=10)
 Bigger_date_format = Bigger_date.strftime("%d.%m.%Y")
 
 time.sleep(random.randint(1,10))
 web_actions.relax()
-web_actions.click_operation_Xpath(Locators.faelligkeit_element_bigger_date_FULL_XPATH)
+
+
+
+web_actions.click_operation_Xpath("/html/body/div[3]/main/div[2]/div/div[1]/div[5]/div/div/div[1]/div/div/input[2]")
+#Ei vielä toimii 
 time.sleep(random.randint(1,10))
 web_actions.relax()
 
 
-input_field_3 = config_webdriver_manager.driver.find_element(By.XPATH, '//*[contains(@id, "picker")]/div[1]/div/div/input[2]')
+""" input_field_3 = config_webdriver_manager.driver.find_element(By.XPATH, Locators.falligkeit_Bigger_date_fxp)
 actions = ActionChains(config_webdriver_manager.driver)
-actions.click(input_field_3).send_keys('3.10.2035').send_keys(Keys.RETURN).perform()
+actions.click(input_field_3).send_keys(Bigger_date_format).send_keys(Keys.RETURN).perform() """
+
+input_field_3 = WebDriverWait(config_webdriver_manager.driver, 10).until(
+    EC.element_to_be_clickable((By.XPATH, '//input[@placeholder="bis:"]'))
+)
+input_field_3.clear()
+input_field_3.send_keys(Bigger_date_format)
+input_field_3.send_keys(Keys.RETURN)
+
 
 time.sleep(random.randint(5,10))
 #web_actions.write_operation_xpath(Locators.faelligkeit_element_bigger_date_FULL_XPATH,Bigger_date_format)
@@ -186,7 +221,7 @@ web_actions.click_operation_css(Locators.Zusatzliche_Filter_css)
 
 # Zusatzliche_Filter_Full_XPath 
 
-web_actions.relax()
+""" web_actions.relax()
 web_actions.click_operation_css(Locators.Gelisteter_Zeitraum_ruksi_css)
 
 web_actions.relax()
@@ -194,7 +229,7 @@ web_actions.click_operation_css(Locators.Anwenden_Gelisteter_Zeitraum_css)
 web_actions.relax()
 web_actions.click_operation_Xpath(Locators.Anwenden_Gelisteter_Zeitraum_XPATH)
 web_actions.relax()
-
+ """
 Smaller_date_listed=  datetime.date.today()- relativedelta(years=3)
 Smaller_date_format_listed = Smaller_date_listed.strftime("%d.%m.%Y")
 
