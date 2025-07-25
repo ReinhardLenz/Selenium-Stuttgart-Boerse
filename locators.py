@@ -16,7 +16,7 @@ class Locators():
 
     Cookie_einstellungen_CLASS="mt-4 p-2 font-semibold w-full inline-flex justify-center items-center text-white border border-white bg-trend-positive fill-white"
     Cookie_einstellungen_SELECTOR="#cookie-consent > div.bg-secondary-background-modal.sm\:container.p-3.md\:\!p-12.text-white.m-1.border.border-white > div.sticky.bottom-0 > button.mt-2\.5.p-2.font-semibold.w-full.transition.inline-flex.justify-center.items-center.text-white.border.border-white.hover\:bg-white.hover\:text-primary-dark.hover\:border-primary-dark"
-
+    cookie_acceptor_css_new="#ccm-widget > div > div.ccm-modal--body > div.ccm-widget--buttons > button.button.ccm--save-settings.ccm--button-primary.ccm--ctrl-init"
     Wahrung_click_id_1="mainCurrencyAmountPrincipal"
     
     Wahrung_click_id="bsg-filters-btn-bgs-filter-7"
@@ -38,6 +38,9 @@ class Locators():
     Wahrung_click_CSS_SELECTOR="#mainCurrencyAmountPrincipal > div > button"
     Wahrung_click_XPATH='//*[@id="mainCurrencyAmountPrincipal"]/div/button'
 
+    Wahrung_radio_button_full_xpath="/html/body/div[3]/main/div[2]/div/div[1]/div[7]/div/div/ul/li/div/div/span/input"
+
+
     Wahrung_text_field_click_CSS_1_SELECTOR="#mainCurrencyAmountPrincipal > div > div > div:nth-child(1) > div > input"
     Wahrung_text_field_click_CSS_2_SELECTOR="#mainCurrencyAmountPrincipal > div > div > div:nth-child(1) > div"
     Wahrung_text_field_click_CSS_3_SELECTOR="#mainCurrencyAmountPrincipal > div > div > div:nth-child(1) > div > input"
@@ -55,7 +58,7 @@ class Locators():
     
     Wahrung_Euro_small_cross_click_XP='//*[@id="mainCurrencyAmountPrincipal"]/div/div/ul/li/div/div/span/label'
     Wahrung_Anwenden_XP='//*[@id="mainCurrencyAmountPrincipal"]/div/div/div[2]/button/span'
-
+    Wahrung_checkbox_Eur1_CSS='input[type="checkbox"] + label[for][class*="cursor-pointer"]'
     
 
     #Wahrung_checkbox_Euro_Xpath="//*[@id="mCSB_4_container"]/ul/li/div/div/label"
@@ -113,13 +116,23 @@ class Locators():
     Handelbare_einh_Button_xp="/html/body/main/div[2]/div[1]/div/div/form/div/div[2]/ul/li[7]/div/button"
     Handelbare_einh_Button_xp_later="/html/body/div[1]/main/div[1]/div/div/div[2]/div/div[2]/div/div/ul/li[2]/div/div/span/input"
     Gelisteter_Zeitraum_Button_xpath_1='//*[@id="additional-filters"]/div/div/ul/li[3]/div/div/span'
+    Gelisteter_Zeitraum_Button_css='#additional-filters > div > div > ul > li:nth-child(4) > div > div > span > label'
     right_arrow_full_xp="/html/body/main/div[2]/div[3]/div/div/div[1]/div/div[1]/a[2]"
     right_arrow_class="btn tablesaw-nav-btn tablesaw-btn btn-micro right"
 
     min_Littera_xp='//*[@id="minOrderVolume"]/div/div/div/div[2]/div[1]/input'
+    min_Littera_css="#minOrderVolume > div > div > div > div.grid.grid-cols-2.gap-2 > div:nth-child(1) > input"
+    min_Littera_full_xp='/html/body/div[3]/main/div[2]/div/div[1]/div[10]/div/div/div/div[2]/div[1]/input'
+
     max_Littera_xp='//*[@id="minOrderVolume"]/div/div/div/div[2]/div[2]/input'
-    Anwenden_littera_xp ='//*[@id="minOrderVolume"]/div/div/div/button'
-    Anwenden_littera_css="#minOrderVolume > div > div > div > button"
+    max_Littera_css='#minOrderVolume > div > div > div > div.grid.grid-cols-2.gap-2 > div:nth-child(2) > input'
+    max_Littera_full_xp='/html/body/div[3]/main/div[2]/div/div[1]/div[10]/div/div/div/div[2]/div[2]/input'
+
+    Anwenden_littera_css="#minOrderVolume > div > div > div > button > span"
+    Anwenden_littera_xp ='//*[@id="minOrderVolume"]/div/div/div/button/span'
+    Anwenden_littera_full_xp="/html/body/div[3]/main/div[2]/div/div[1]/div[10]/div/div/div/button/span"
+
+
 
     Delete_littera_full_Xpath="/html/body/main/div[2]/div[2]/div/div/ul/li/button"
     #                          /html/body/main/div[2]/div[2]/div/div/ul/li/button
@@ -132,11 +145,17 @@ class Locators():
 
     Smaller_date_ID="bsg-date-range-input-1623"
     Smaller_date_2_xp= '/html/body/div[3]/main/div[2]/div/div[1]/div[5]/div/div[1]/div/div/input[1]'
+
+
+
     Bigger_date_2_xp="/html/body/div[3]/main/div[2]/div/div[1]/div[5]/div/div[1]/div/div/input[2]"
     Small_calendersymbol_full_xp="/html/body/div[3]/main/div[2]/div/div[1]/div[5]/div/div[1]/div/div/div[1]/button/span/svg"
     Bigger_date_2_css='[id^="picker"] > div.mud-input-control.mud-input-control-margin-dense > div > div > input:nth-child(3)'
     Bigger_date_full_xp="/html/body/div[3]/main/div[2]/div/div[1]/div[10]/div/div/div/div[2]/div[2]/input"
-    
+
+    falligkeit_Bigger_date_fxp='/html/body/div[3]/main/div[2]/div/div[1]/div[5]/div/div/div[1]/div/div/input[2]'
+
+
     
     Gelisteter_Zeitraum_ruksi_css="#additional-filters > div > div > ul > li:nth-child(4) > div > div > span > label"
 
