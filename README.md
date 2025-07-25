@@ -1,26 +1,124 @@
-# Selenium-Stuttgart-Boerse
+🏦 Stuttgart Bond Search Automation
+Last major update: 23.4.2025
 
-UPDATE 23.4.2025. for instance, the cookie acceptor is now a aside element, and many other changes. Basically everythin changed!
+🎉 Major refactor! Cookie consent handling now uses <aside> elements. Many improvements – essentially, everything changed.
 
-A Python program with  Selenium module, to open "Stuttgart" Bond search, select criteria and output the result to a excel file.
-There are some dates calculated from the now with the datetime, and years are added or subtracted and the calculated dates are entered in the web page. THe excel file name contains the actural date. My idea was to run this program in certain intervals, automatically started y crontab, and then it would be "headless".
+📌 Overview
+This Python project automates the process of searching for bonds on the Börse Stuttgart website using Selenium. It selects specific criteria, interacts with dynamic filters, extracts the resulting data, and writes it to an Excel file. You can run the script periodically via crontab in a headless mode.
 
-Bond_search.py is the main program, and to have more structure, 3 different modules are imported: config, web actions and locators
+At the end, a GPT-4 summary is optionally generated to provide insights about the bonds (requires OpenAI API access).
 
-1. config.py is the webdriver section in linux. the config1.py works for me in Windows. In Linux, I didn't have to download any Chromedriver, but in Windows version it was necessary.  
+🧩 Project Structure
+plaintext
+Copier
+Modifier
+bond_search/
+├── bond_search.py            # Main script
+├── config.py                 # Chrome WebDriver setup for Linux
+├── config1.py                # Optional config for Windows
+├── web_actions.py           # Utility functions for Selenium interactions
+├── locators.py              # Central place for XPath and CSS selectors
+├── gpt_helper.py            # Interacts with GPT-4 for summaries (optional)
+├── requirements.txt         # Required Python packages
+⚙️ Setup Instructions
+🔐 Prerequisites
+Python 3.8+
 
-2. web_actions.py contains different functions, depending on whether id or xpath etc is used
+Chrome browser
 
-3. locators.py contains the "library" of different xpath or id's with a description of the field, as the XPath or id is not descriptive
+Chromedriver (Windows only; handled automatically in Linux via webdriver_manager)
 
-I used the program in a virtual environment. 
-
-for installing the requirements.txt enter in terminal:
-pip install -r requirements.text
-
-
-Note to myself: the virtual environment i created by entering in terminal:
+🐍 Create and activate virtual environment (Linux example)
+bash
+Copier
+Modifier
 python3 -m venv venv
-
-to start the virtual environment enter in terminal:
 source venv/bin/activate
+📦 Install dependencies
+bash
+Copier
+Modifier
+pip install -r requirements.txt
+Note: Ensure your requirements.txt includes packages such as selenium, pandas, numpy, openpyxl, bs4, webdriver_manager, etc.
+
+🧠 Key Features
+Automated bond search with custom filters:
+
+Currency (Euro)
+
+Tradable units
+
+Listed date range
+
+Maturity date range
+
+Bond type (Unternehmensanleihe)
+
+Minimum yield (e.g., 3%)
+
+Scrolls and clicks "show more results"
+
+Extracts table data using BeautifulSoup
+
+Exports results to Excel with formatted output
+
+Automatically names Excel files with the current date
+
+Optional summary using GPT-4:
+
+Highlights the highest yield bond
+
+Lists common maturity years
+
+Notes interesting patterns
+
+🤖 Headless Mode
+To run in headless mode (for crontab etc.), uncomment the relevant line in config.py:
+
+python
+Copier
+Modifier
+chrome_options.add_argument("--headless")
+📊 Output
+Excel file saved to c:/temp/tutorial/sample.xlsx (adjust path as needed)
+
+Optional GPT-4 text summary saved to c:/temp/tutorial/bond_summary.txt
+
+📅 Automation with Crontab (Linux)
+Example crontab entry to run daily at 10 AM:
+
+bash
+Copier
+Modifier
+0 10 * * * /path/to/venv/bin/python /path/to/bond_search/bond_search.py
+Make sure the script has execution permissions and proper download paths.
+
+🧪 Example Locators Structure
+python
+Copier
+Modifier
+class Locators:
+    cookie_acceptor = ".js-bsg-cookie-layer__confirm > span:nth-child(1)"
+    Cookie_einstellungen_XPATH = '//*[@id="cookie-consent"]/div[2]/div[3]/button[1]/span'
+    ...
+Organizing all selectors centrally improves maintainability as the page structure changes.
+
+🧠 GPT Integration
+To use GPT-4 for bond analysis, you need to:
+
+Set your OpenAI API key in an environment variable or config file
+
+Ensure gpt_helper.py contains your API call logic
+
+✅ To-Do / Ideas
+Add logging instead of print() statements
+
+Support multiple export formats (CSV, JSON)
+
+Add CLI arguments for flexible date filtering
+
+Dockerize the project for easier deployment
+
+📝 License
+MIT License. Use and modify freely, but no guarantees or warranties.
+
