@@ -1,7 +1,5 @@
 🏦 Stuttgart Bond Search Automation
-Last major update: 23.4.2025
-NOTE! At the the moment (25.7.2025) this version doesn't work anymore, due to change in structure of the scraped page!!
-
+Adaption summer 2025 (1.8.2025) 
 🎉 Major refactor! Cookie consent handling now uses <aside> elements. Many improvements – essentially, everything changed.
 
 📌 Overview
@@ -97,7 +95,7 @@ Modifier
 0 10 * * * /path/to/venv/bin/python /path/to/bond_search/bond_search.py
 Make sure the script has execution permissions and proper download paths.
 
-🧪 Example Locators Structure
+🧪 Example Locators 
 python
 Copier
 Modifier
@@ -107,12 +105,7 @@ class Locators:
     ...
 Organizing all selectors centrally improves maintainability as the page structure changes.
 
-🧠 GPT Integration
-To use GPT-4 for bond analysis, you need to:
-
-Set your OpenAI API key in an environment variable or config file
-
-Ensure gpt_helper.py contains your API call logic
+collect_locators.py is an auxiliary program, which goes through the Bond_search program, and writes down all stored Locators. This was necessary, because during testing of the program, I have to check many different ways and properties of the web pages, which causes normally many unused Locators, which are not working. 
 
 ✅ To-Do / Ideas
 Add logging instead of print() statements
