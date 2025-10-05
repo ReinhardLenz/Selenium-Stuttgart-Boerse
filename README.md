@@ -2,6 +2,8 @@
 Last major update: 23.4.2025
 NOTE! At the the moment (25.7.2025) this version doesn't work anymore, due to change in structure of the scraped page!!
 
+Update: 5.10.2025: I have created a new private repository, which can handle the new Stuttgart web page successfully.
+
 🎉 Major refactor! Cookie consent handling now uses <aside> elements. Many improvements – essentially, everything changed.
 
 📌 Overview
